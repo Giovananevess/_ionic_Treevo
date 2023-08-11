@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
   constructor(private ApiService:  ApiService) {
     // this.createcall();
@@ -13,6 +14,7 @@ export class HomePage {
     // this.updateCall();
     // this.deleteCall();
   }
+
 
   listCall() {
     this.ApiService.listcall().subscribe(data => {

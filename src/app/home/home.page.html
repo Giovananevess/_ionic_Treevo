@@ -1,20 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Menu Content</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-content class="ion-padding">This is the menu content.</ion-content>
+</ion-menu>
+<ion-content>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-menu-button class="button_menu"></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <div class="div_button">
+        <ion-button class="button_add" color="secondary" shape="round"
+          >Adicionar chamado</ion-button
+        >
+      </div>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-card class="card">
+        <ion-card-title>Erro servidor</ion-card-title>
+        <ion-card-content> Pendente </ion-card-content>
+        <ion-icon class="icons" name="create-outline"></ion-icon>
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-card>
+    </ion-content>
   </div>
 </ion-content>
+<ion-footer [translucent]="true">
+  <ion-toolbar color="primary" class="footer">
+    <div class="saiba_mais">
+      <ion-icon name="chevron-up-outline"></ion-icon>
+      <ion-title>Saiba mais</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-footer>

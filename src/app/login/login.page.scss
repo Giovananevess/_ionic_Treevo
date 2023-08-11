@@ -1,0 +1,40 @@
+// Estilização page login
+
+.ion-header {
+  margin-top: 100px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: none;
+}
+
+.img_logo {
+  max-width: 500px !important;
+  max-height: 500px !important;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.inputs-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.div_input {
+  flex-direction: column;
+  margin: 50px;
+}
+
+
+.button {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 50px;
+  --border-color: var(--ion-color-primary); /* Define a cor do outline para a cor primary */
+  --background: var(--ion-color-primary); /* Define a cor de fundo para a cor primary */
+  color: white; /* Define a cor do texto para branco */
+  border-radius: 25px;
+  border: 1px solid white; /* Adiciona uma borda branca com 1px de espessura */
+}

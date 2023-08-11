@@ -1,0 +1,32 @@
+<ion-header class="ion-header">
+  <ion-img
+    class="img_logo"
+    src="../../assets/logos/logobranco.svg"
+    alt="Imagem com a logo da empresa que é um trevo de três folha de cor branca"
+  ></ion-img>
+  <ion-text>Bem-Vindo ao aplicativo da Trevo</ion-text>
+</ion-header>
+
+<ion-content color="primary" [fullscreen]="true" class="inputs-container">
+  <div class="div_input">
+    <ion-item>
+      <ion-input labelPlacement="stacked" shape="round" class="input_login">
+        <div slot="label">
+          E-mail <ion-text color="danger">(Required)</ion-text>
+        </div>
+      </ion-input>
+    </ion-item>
+
+    <br />
+
+    <ion-item>
+      <ion-input labelPlacement="stacked" type="password">
+        <div slot="label">
+          Senha <ion-text color="danger">(Required)</ion-text>
+        </div>
+      </ion-input>
+    </ion-item>
+  </div>
+
+  <ion-button shape="round" class="button" fill="outline">Entrar</ion-button>
+</ion-content>

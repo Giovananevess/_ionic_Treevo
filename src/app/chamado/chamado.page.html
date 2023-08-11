@@ -1,0 +1,81 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding_">This is the menu content.</ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button class="button_menu"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="div_button">
+      <ion-text class="dados_title">Dados do chamado</ion-text>
+    </div>
+
+    <ion-img
+      class="img_chamado"
+      src="../../assets/peca.jpg"
+      alt="Imagem de uma peça para montagem"
+    ></ion-img>
+    <br />
+
+    <ion-item>
+      <ion-input
+        placeholder="Descrição"
+        clearInput
+        inputmode="text"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        shape="round"
+      ></ion-input>
+    </ion-item>
+
+    <br />
+
+    <ion-item>
+      <ion-select label="Prioridade" placeholder="Nível Prioridade">
+        <ion-select-option value="Baixa">Baixa</ion-select-option>
+        <ion-select-option value="Média">Média</ion-select-option>
+        <ion-select-option value="Alta">Alta</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <br />
+
+    <ion-text class="text_loc">Localização</ion-text>
+    <div class="div_loc">
+      <ion-item>
+        <ion-input
+          placeholder="Latitude"
+          clearInput
+          inputmode="text"
+          autocorrect="off"
+          autocapitalize="off"
+          shape="round"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          placeholder="Longitude"
+          clearInput
+          inputmode="text"
+          autocorrect="off"
+          autocapitalize="off"
+          shape="round"
+        ></ion-input>
+      </ion-item>
+    </div>
+    <br />
+    <ion-button shape="round" class="button" fill="outline">Entrar</ion-button>
+  </ion-content>
+</div>

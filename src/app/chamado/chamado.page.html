@@ -15,20 +15,23 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">
-    <div class="div_button">
-      <ion-text class="dados_title">Dados do chamado</ion-text>
+  <ion-content class="content_dados">
+    <div class="div_chamado">
+      <ion-text color="tertiary"><h3>Dados do chamado</h3> </ion-text>
     </div>
 
-    <ion-img
-      class="img_chamado"
-      src="../../assets/peca.jpg"
-      alt="Imagem de uma peça para montagem"
-    ></ion-img>
+    <div class="img_div">
+      <ion-img
+        class="img_chamado"
+        src="../../assets/peca.jpg"
+        alt="Imagem de uma peça para montagem"
+      ></ion-img>
+    </div>
     <br />
 
     <ion-item>
       <ion-input
+        [(ngModel)]="chamado.descricao"
         placeholder="Descrição"
         clearInput
         inputmode="text"
@@ -42,7 +45,11 @@
     <br />
 
     <ion-item>
-      <ion-select label="Prioridade" placeholder="Nível Prioridade">
+      <ion-select
+        [(ngModel)]="chamado.status"
+        label="Prioridade"
+        placeholder="Nível Prioridade"
+      >
         <ion-select-option value="Baixa">Baixa</ion-select-option>
         <ion-select-option value="Média">Média</ion-select-option>
         <ion-select-option value="Alta">Alta</ion-select-option>
@@ -55,27 +62,33 @@
     <div class="div_loc">
       <ion-item>
         <ion-input
+          [(ngModel)]="chamado.latitude"
           placeholder="Latitude"
           clearInput
-          inputmode="text"
-          autocorrect="off"
-          autocapitalize="off"
+          type="number"
           shape="round"
         ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-input
+          [(ngModel)]="chamado.longitude"
           placeholder="Longitude"
           clearInput
-          inputmode="text"
-          autocorrect="off"
-          autocapitalize="off"
+          type="number"
           shape="round"
         ></ion-input>
       </ion-item>
     </div>
     <br />
-    <ion-button shape="round" class="button" fill="outline">Entrar</ion-button>
+    <ion-button
+      (click)="criarChamado()"
+      shape="round"
+      class="button_addchamado"
+      shape="round"
+      expand="block"
+      color="secondary"
+      >Enviar chamado</ion-button
+    >
   </ion-content>
 </div>

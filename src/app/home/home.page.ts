@@ -1,5 +1,7 @@
+import { Chamado } from './../chamado';
 import { ApiService } from './../service/api.service';
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +10,30 @@ import { Component } from '@angular/core';
 })
 
 export class HomePage {
-  constructor(private ApiService:  ApiService) {
-    // this.createcall();
+
+  public chamado:Chamado = {};
+  public lista: Chamado[] = [];
+
+  constructor(
+    private apiService:  ApiService,
+    private navController: NavController
+  ) {
     this.listCall();
-    // this.updateCall();
-    // this.deleteCall();
+  }
+
+  // Navegação de página
+  showCall() {
+    this.navController.navigateForward('chamado');
   }
 
 
-  listCall() {
-    this.ApiService.listcall().subscribe(data => {
-      console.log(data);
-    });
+  async listCall() {
+    try {
+      this.apiService.listcall().subscribe(data => {
+        this.lista = data
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

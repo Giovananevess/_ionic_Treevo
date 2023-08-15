@@ -9,22 +9,16 @@
 
 <ion-content color="primary" [fullscreen]="true" class="inputs-container">
   <div class="div_input">
-    <ion-item>
-      <ion-input labelPlacement="stacked" shape="round" class="input_login">
-        <div slot="label">
-          E-mail <ion-text color="danger">(Required)</ion-text>
-        </div>
-      </ion-input>
+    <ion-item class="roundedInput">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input><div slot="label"></div></ion-input>
     </ion-item>
 
     <br />
 
-    <ion-item>
-      <ion-input labelPlacement="stacked" type="password">
-        <div slot="label">
-          Senha <ion-text color="danger">(Required)</ion-text>
-        </div>
-      </ion-input>
+    <ion-item class="roundedInput">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input><div slot="label"></div></ion-input>
     </ion-item>
   </div>
 

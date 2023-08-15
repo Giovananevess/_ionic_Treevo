@@ -4,37 +4,65 @@
       <ion-title>Menu Content</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">This is the menu content.</ion-content>
+  <ion-content class="ion-padding_">This is the menu content.</ion-content>
 </ion-menu>
-<ion-content>
-  <div class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-          <ion-menu-button class="button_menu"></ion-menu-button>
-        </ion-buttons>
-      </ion-toolbar>
-      <div class="div_button">
-        <ion-button class="button_add" color="secondary" shape="round"
-          >Adicionar chamado</ion-button
-        >
-      </div>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <ion-card class="card">
-        <ion-card-title>Erro servidor</ion-card-title>
-        <ion-card-content> Pendente </ion-card-content>
-        <ion-icon class="icons" name="create-outline"></ion-icon>
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-card>
-    </ion-content>
-  </div>
-</ion-content>
-<ion-footer [translucent]="true">
-  <ion-toolbar color="primary" class="footer">
-    <div class="saiba_mais">
-      <ion-icon name="chevron-up-outline"></ion-icon>
-      <ion-title>Saiba mais</ion-title>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button class="button_menu"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="content_dados">
+    <div class="div_chamado">
+      <ion-button
+        (click)="showCall()"
+        shape="round"
+        class="button_addchamado"
+        expand="block"
+        color="secondary"
+        >Adicionar chamado</ion-button
+      >
     </div>
-  </ion-toolbar>
-</ion-footer>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Erro no servidor</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="content-wrapper">
+        <ion-text class="text-left">Pendente</ion-text>
+        <div class="icons-right">
+          <ion-icon name="create-outline"></ion-icon>
+          <ion-icon name="trash-outline"></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngFor="let item of lista">
+      <ion-card-header>
+        <ion-card-title>{{ item.descricao }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="content-wrapper">
+        <ion-text class="text-left">{{ item.status }}</ion-text>
+        <div class="icons-right">
+          <ion-icon name="create-outline"></ion-icon>
+          <ion-icon name="trash-outline"></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+
+  <ion-footer class="footer" color="primary">
+    <ion-toolbar class="footer" color="primary">
+      <div class="content_footer">
+        <div class="centered_column">
+          <ion-icon name="chevron-up-outline"></ion-icon>
+          <ion-title>Saiba mais</ion-title>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+</div>

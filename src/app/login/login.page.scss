@@ -38,3 +38,13 @@
   border-radius: 25px;
   border: 1px solid white; /* Adiciona uma borda branca com 1px de espessura */
 }
+
+.roundedInput {
+  --border-color: var(--ion-color-medium-shade);
+  --border-radius: 20px;
+  --border-width: 0px;
+  --box-shadow: 3px rgb(176, 208, 216);
+  --highlight-height: 0;
+  --background: #fcfdfd;
+ }
+

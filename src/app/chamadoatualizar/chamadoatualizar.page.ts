@@ -12,7 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ChamadoatualizarPage implements OnInit {
 
   public chamado: Chamado = {
-    id: 0
+    id: 0,
+    longitude: 0,
+    latitude: 0
   };
   public chamados: Chamado[] = [];
 

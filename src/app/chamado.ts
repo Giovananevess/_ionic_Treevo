@@ -1,9 +1,9 @@
-export interface Chamado  {
+export interface Chamado {
   id: number
   image?: string
   descricao?: string
   prioridade?: string
   status?: string
-  latitude?: number
-  longitude?: number
+  latitude: number
+  longitude: number
 }

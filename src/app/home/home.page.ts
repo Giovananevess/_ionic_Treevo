@@ -1,7 +1,8 @@
+import { AuthService } from '../services/auth.service';
 import { Chamado } from './../chamado';
 import { ApiService } from './../service/api.service';
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,19 @@ import { NavController } from '@ionic/angular';
 
 export class HomePage {
 
-  public chamado: Chamado = { id: 0 };
+  private loading: any;
+
+  public chamado: Chamado = {
+    id: 0,
+    longitude: 0,
+    latitude: 0
+  };
   public chamados: Chamado[] = [];
 
   constructor(
     private apiService: ApiService,
+    private loadingCtrl: LoadingController,
+    private authService: AuthService,
     private navController: NavController
   ) {
     this.listCall();
@@ -62,6 +71,24 @@ export class HomePage {
 
       }
     );
+  }
+
+
+  async logout() {
+    await this.presentLoading();
+
+    try {
+      await this.authService.logout();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.loading.dismiss();
+    }
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
   }
 
 }

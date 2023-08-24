@@ -8,6 +8,8 @@ import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { ModalPage } from '../modal/modal.page';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-chamado',
@@ -16,7 +18,11 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 })
 export class ChamadoPage {
 
-  public chamado: Chamado = { id: 0 };
+  public chamado: Chamado = {
+    id: 0,
+    longitude: 0,
+    latitude: 0
+  };
 
   @ViewChild('map') mapRef!: ElementRef<HTMLElement>;
   map!: GoogleMap;
@@ -24,11 +30,14 @@ export class ChamadoPage {
   imageSource: any;
 
   constructor(
+    private domSanitizer: DomSanitizer,
     private modalCtrl: ModalController,
     private apiService: ApiService,
     private toastController: ToastController,
     private router: Router
-  ) { }
+  ) {
+    this.ondeestou()
+  }
 
 
   takePicture = async () => {
@@ -36,14 +45,21 @@ export class ChamadoPage {
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Base64,
-      source: CameraSource.Prompt
+      // resultType: CameraResultType.Uri,
+      source: CameraSource.Prompt,
+      // saveToGallery: true
     });
 
     this.imageSource = 'data:image/jpe;base64,' + image.base64String;
 
     console.log(this.imageSource);
 
+    // this.imageSource.DomSanitizer.bypassSecurityTrustUrl(image.webPath ? image.webPath : "")
   }
+
+  // getPhoto() {
+  //   return this.imageSource
+  // }
 
   ionViewDidEnter() {
     this.createMap();
@@ -56,8 +72,8 @@ export class ChamadoPage {
       element: this.mapRef.nativeElement,
       config: {
         center: {
-          lat: -22.1709474,
-          lng: -49.9591213,
+          lat: this.chamado.latitude,
+          lng: this.chamado.longitude,
         },
         zoom: 8,
       }
@@ -70,20 +86,12 @@ export class ChamadoPage {
     const markers: Marker[] = [
       {
         coordinate: {
-          lat: -22.1709474,
-          lng: -49.9591213,
+          lat: this.chamado.latitude,
+          lng: this.chamado.longitude,
         },
         title: 'localhost',
         snippet: 'Best place on earth',
       },
-      {
-        coordinate: {
-          lat: -22.1709474,
-          lng: -49.7591213,
-        },
-        title: 'random place on earth',
-        snippet: 'Not sure',
-      }
     ];
 
     const result = await this.map.addMarkers(markers);
@@ -103,9 +111,11 @@ export class ChamadoPage {
 
   }
 
-
-
-
+  async ondeestou() {
+    const printCurrentPosition = await Geolocation.getCurrentPosition();
+    this.chamado.latitude = printCurrentPosition.coords.latitude;
+    this.chamado.longitude = printCurrentPosition.coords.longitude;
+  };
 
   async criarChamado() {
     try {

@@ -1,16 +1,15 @@
 .container {
   width: 100%;
-  height: 350px;
+  height: 400px;
 }
 
 capacitor-google-map {
   display: inline-block;
-  width: 275px;
+  width: 100%;
   height: 400px;
+  position: absolute;
+  border-radius: 10px;
 }
-
-
-
 
 .button_menu {
   color: var(--ion-color-primary-contrast);
@@ -47,3 +46,12 @@ capacitor-google-map {
   max-width: 100%;
 }
 
+
+// // estilização da photo
+// .img_problem {
+
+// }
+
+// .img_div {
+
+// }

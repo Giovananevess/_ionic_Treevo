@@ -35,11 +35,13 @@ export class ChamadoPage {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
-      resultType: CameraResultType.DataUrl,
+      resultType: CameraResultType.Base64,
       source: CameraSource.Prompt
     });
 
-    this.imageSource = image.dataUrl;
+    this.imageSource = 'data:image/jpe;base64,' + image.base64String;
+
+    console.log(this.imageSource);
 
   }
 

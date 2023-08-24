@@ -1,0 +1,40 @@
+
+.ion-header {
+  background-color: var(--ion-color-primary);
+  margin-top: 100px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: none;
+}
+
+.img_logo {
+  max-width: 500px !important;
+  max-height: 500px !important;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.inputs-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.div_input {
+  flex-direction: column;
+  margin: 50px;
+}
+
+.roundedInput {
+  --border-color: var(--ion-color-medium-shade);
+  --border-radius: 20px;
+  --border-width: 0px;
+  --box-shadow: 3px rgb(176, 208, 216);
+  --highlight-height: 0;
+  --background: #fcfdfd;
+ }
+
+
+
+

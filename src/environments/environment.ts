@@ -16,7 +16,17 @@
 // };
 
 export const environment = {
-  production: false
+  production: false,
+  mapsKey: 'AIzaSyD2ej0N3ILPXpXYWk0SUyTotnCxADYcny4',
+  firebase: {
+    apiKey: "AIzaSyDlWDxMAFFB-sKTgezSJpO8Iuu508DVMGs",
+    authDomain: "trevo-b595e.firebaseapp.com",
+    projectId: "trevo-b595e",
+    storageBucket: "trevo-b595e.appspot.com",
+    messagingSenderId: "304182631009",
+    appId: "1:304182631009:web:8cd6bf58f8f0fca38ae820",
+    measurementId: "G-W4DSNLR33N"
+  }
 };
 
 /*

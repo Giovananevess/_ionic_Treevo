@@ -28,28 +28,21 @@
       >
     </div>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Erro no servidor</ion-card-title>
-      </ion-card-header>
-      <ion-card-content class="content-wrapper">
-        <ion-text class="text-left">Pendente</ion-text>
-        <div class="icons-right">
-          <ion-icon name="create-outline"></ion-icon>
-          <ion-icon name="trash-outline"></ion-icon>
-        </div>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card *ngFor="let item of lista">
+    <ion-card *ngFor="let item of chamados">
       <ion-card-header>
         <ion-card-title>{{ item.descricao }}</ion-card-title>
       </ion-card-header>
       <ion-card-content class="content-wrapper">
         <ion-text class="text-left">{{ item.status }}</ion-text>
         <div class="icons-right">
-          <ion-icon name="create-outline"></ion-icon>
-          <ion-icon name="trash-outline"></ion-icon>
+          <ion-icon
+            name="create-outline"
+            (click)="detailsCall(item.id)"
+          ></ion-icon>
+          <ion-icon
+            name="trash-outline"
+            (click)="deleteCall(item.id)"
+          ></ion-icon>
         </div>
       </ion-card-content>
     </ion-card>

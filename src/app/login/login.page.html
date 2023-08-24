@@ -10,17 +10,29 @@
 <ion-content color="primary" [fullscreen]="true" class="inputs-container">
   <div class="div_input">
     <ion-item class="roundedInput">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input><div slot="label"></div></ion-input>
+      <ion-input [(ngModel)]="userLogin.email" type="email" placeholder="E-mail"
+        ><div slot="label"></div
+      ></ion-input>
     </ion-item>
 
     <br />
 
     <ion-item class="roundedInput">
-      <ion-label position="floating">Senha</ion-label>
-      <ion-input><div slot="label"></div></ion-input>
+      <ion-input
+        [(ngModel)]="userLogin.password"
+        type="password"
+        placeholder="senha"
+        ><div slot="label"></div
+      ></ion-input>
     </ion-item>
+
+    <ion-title><span id="forgotten">Esqueceu a senha?</span></ion-title>
   </div>
 
-  <ion-button shape="round" class="button" fill="outline">Entrar</ion-button>
+  <ion-button shape="round" class="button" fill="outline" (click)="login()"
+    >Entrar</ion-button
+  >
+  <ion-title [routerLink]="['/cadastro']" style="text-decoration: underline"
+    >Não tem cadastro? Registre-se</ion-title
+  >
 </ion-content>

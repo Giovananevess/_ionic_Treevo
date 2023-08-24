@@ -22,12 +22,10 @@
 
     <div class="img_div">
       <ion-img
-        src="{{imageSource}}"
-        style="width: 400px"
+        class="img_chamado"
+        src="../../assets/peca.jpg"
         alt="Imagem de uma peça para montagem"
       ></ion-img>
-
-      <ion-button (click)="takePicture()">Camera</ion-button>
     </div>
     <br />
 
@@ -35,12 +33,12 @@
       <ion-input
         [(ngModel)]="chamado.descricao"
         placeholder="Descrição"
-        clearInput
         inputmode="text"
         autocorrect="off"
         autocapitalize="off"
         spellcheck="false"
         shape="round"
+        [value]="chamado.descricao"
       ></ion-input>
     </ion-item>
 
@@ -55,15 +53,6 @@
         <ion-select-option value="Baixa">Baixa</ion-select-option>
         <ion-select-option value="Média">Média</ion-select-option>
         <ion-select-option value="Alta">Alta</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <br />
-
-    <ion-item>
-      <ion-select [(ngModel)]="chamado.status" label="Status do chamado">
-        <ion-select-option value="Baixa">Pendente</ion-select-option>
-        <ion-select-option value="Média">Resolvido</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -93,18 +82,20 @@
     </div>
     <br />
 
-    <div class="container">
-      <capacitor-google-map #map></capacitor-google-map>
-    </div>
+    <ion-item>
+      <ion-select [(ngModel)]="chamado.status" label="Status do chamado">
+        <ion-select-option value="Baixa">Pendente</ion-select-option>
+        <ion-select-option value="Média">Resolvido</ion-select-option>
+      </ion-select>
+    </ion-item>
 
     <ion-button
-      (click)="criarChamado()"
+      (click)="updateCall(chamado.id, chamado)"
       shape="round"
       class="button_addchamado"
-      shape="round"
       expand="block"
       color="secondary"
-      >Enviar chamado</ion-button
+      >Atualizar chamado</ion-button
     >
   </ion-content>
 </div>

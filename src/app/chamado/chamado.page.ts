@@ -1,35 +1,117 @@
+import { async } from '@angular/core/testing';
 import { Chamado } from './../chamado';
-// chamado.page.ts
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { ApiService } from './../service/api.service';
-import { Component, OnInit } from '@angular/core';
-
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { GoogleMap, Marker } from '@capacitor/google-maps';
+import { environment } from 'src/environments/environment';
+import { ModalPage } from '../modal/modal.page';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-chamado',
   templateUrl: './chamado.page.html',
   styleUrls: ['./chamado.page.scss'],
 })
-export class ChamadoPage implements OnInit {
+export class ChamadoPage {
 
-  public chamado:Chamado = {};
+  public chamado: Chamado = { id: 0 };
+
+  @ViewChild('map') mapRef!: ElementRef<HTMLElement>;
+  map!: GoogleMap;
+
+  imageSource: any;
 
   constructor(
+    private modalCtrl: ModalController,
     private apiService: ApiService,
-    private toastController: ToastController
-  ) {
-    this.criarChamado();
+    private toastController: ToastController,
+    private router: Router
+  ) { }
+
+
+  takePicture = async () => {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Prompt
+    });
+
+    this.imageSource = image.dataUrl;
+
   }
 
-  ngOnInit() {}
+  ionViewDidEnter() {
+    this.createMap();
+  }
+
+  async createMap() {
+    this.map = await GoogleMap.create({
+      id: 'my-map',
+      apiKey: environment.mapsKey,
+      element: this.mapRef.nativeElement,
+      config: {
+        center: {
+          lat: -22.1709474,
+          lng: -49.9591213,
+        },
+        zoom: 8,
+      }
+    });
+    await this.addMarkers();
+
+  }
+
+  async addMarkers() {
+    const markers: Marker[] = [
+      {
+        coordinate: {
+          lat: -22.1709474,
+          lng: -49.9591213,
+        },
+        title: 'localhost',
+        snippet: 'Best place on earth',
+      },
+      {
+        coordinate: {
+          lat: -22.1709474,
+          lng: -49.7591213,
+        },
+        title: 'random place on earth',
+        snippet: 'Not sure',
+      }
+    ];
+
+    const result = await this.map.addMarkers(markers);
+
+    this.map.setOnMarkerClickListener(async (marker) => {
+
+      const modal = await this.modalCtrl.create({
+        component: ModalPage,
+        componentProps: {
+          marker,
+        },
+        breakpoints: [0, 0.3],
+        initialBreakpoint: 0.3,
+      });
+      modal.present();
+    });
+
+  }
+
+
+
+
 
   async criarChamado() {
     try {
-      const response = await this.apiService.createCall(this.chamado).toPromise();
-      const jsonCall = JSON.stringify(response);
-      console.log(jsonCall);
+      this.apiService.createCall(this.chamado).subscribe(data => { });
       this.mostrarToast('Chamado criado com sucesso');
-    } catch (error) {
+      this.router.navigate(['home']);
+    }
+    catch (error) {
       console.error('Erro ao criar o chamado:', error);
       this.mostrarToast('Erro ao criar o chamado');
     }

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ChamadoPageRoutingModule } from './chamado-routing.module';
 
 import { ChamadoPage } from './chamado.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ChamadoPage } from './chamado.page';
     IonicModule,
     ChamadoPageRoutingModule
   ],
-  declarations: [ChamadoPage]
+  declarations: [ChamadoPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ChamadoPageModule {}
+export class ChamadoPageModule { }

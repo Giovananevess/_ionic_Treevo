@@ -1,0 +1,107 @@
+// variables
+$darkPurple: #00106a;
+$lightBlue: #dfe9ff;
+$activeBlue: #4b71ff;
+$white: #ffffff;
+$lightPurple: #989dc5;
+
+// mixins
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+    -webkit-box-shadow:$top $left $blur $color #{$inset};
+    -moz-box-shadow:$top $left $blur $color #{$inset};
+    box-shadow:$top $left $blur $color #{$inset};
+}
+
+body {
+  background: var(--ion-color-primary);
+  font-family: Lato, sans-serif;
+}
+
+
+
+
+
+// banner styles
+.banner {
+  margin: 32px 0px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+  @media (min-width: 768px) {
+    height: 300px;
+    width: 300px;
+    margin-bottom: 32px;
+  }
+  .banner-image {
+    position: absolute;
+    opacity: .25;
+    height: 350px;
+      @media (min-width: 768px) {
+        display: inherit;
+        height: 250px;
+        opacity: 0.5;
+      }
+    @media (min-width: 992px) {
+        height: 500px;
+        top: -50px;
+      opacity: 1;
+      }
+    }
+
+  .banner-text {
+    max-width: 400px;
+    h1 {
+      color: #ffffff;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: #ffffff;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+  }
+
+}
+
+// card styles
+.mb-30 {
+  margin-bottom: 30px;
+}
+.card {
+  padding: 16px 24px;
+  background: #efeff0;
+  height: 100%;
+  position: relative;
+  border: none;
+  border: 16px solid transparent;
+
+  h3.card-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--ion-color-secondary);
+  }
+  p {
+    color: var(--ion-color-secondary);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 72px;
+  }
+  .card-link {
+    position: absolute;
+    bottom: 18px;
+  }
+
+  .card-icon {
+    width: 60px;
+    margin-bottom: 8px;
+    position: relative;
+    top: 0;
+    left: -12px;
+  }
+}
+
+

@@ -1,0 +1,2 @@
+export interface Saiba {
+}

@@ -31,7 +31,11 @@ const routes: Routes = [
   },
   {
     path: 'modal',
-    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+    loadChildren: () => import('./modal/modal.module').then(m => m.ModalPageModule)
+  },
+  {
+    path: 'saibamais',
+    loadChildren: () => import('./saibamais/saibamais.module').then(m => m.SaibamaisPageModule)
   },
 
 ];

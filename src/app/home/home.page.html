@@ -16,7 +16,7 @@
       alt="Imagem com a logo da empresa que é um trevo de três folha de cor branca"
     ></ion-img>
 
-    <ion-item color="primary">
+    <ion-item color="primary" [routerLink]="['/saibamais']">
       <ion-label> Saiba mais </ion-label>
     </ion-item>
 
@@ -86,7 +86,7 @@
       <div class="content_footer">
         <div class="centered_column">
           <ion-icon name="chevron-up-outline"></ion-icon>
-          <ion-title>Saiba mais</ion-title>
+          <ion-title [routerLink]="['/saibamais']">Saiba mais</ion-title>
         </div>
       </div>
     </ion-toolbar>
